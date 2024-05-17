@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    /* Initialize CSS variables for color */
+    :root {
+      --third-color: #333;
+      --blue-color: #002184;
+      --fourth-color: #004a57;
+    }
+
+    /* Styling for the menu container */
+    .menu-container {
+      width: 1152px;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Styling for navigation list */
+    .nav-wrapper ul.nav-list {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-wrapper ul.nav-list li {
+      margin-left: 30px;
+      padding: 20px 0;
+      position: relative;
+    }
+    .nav-wrapper ul.nav-list li a {
+      color: var(--third-color);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: all 0.5s ease-in-out;
+    }
+
+    /* Hover and active state styles for navigation links */
+    .nav-wrapper ul.nav-list li a:hover,
+    .nav-wrapper ul.nav-list li.active a {
+      color: var(--blue-color);
+    }
+
+    /* Styling for dropdown menu */
+    nav ul.dropdown-list {
+      list-style-type: none;
+      display: block;
+      background: rgb(237, 229, 229);
+      padding: 6px 16px;
+      position: absolute;
+      width: max-content;
+      z-index: 9999;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .nav-wrapper ul.dropdown-list li {
+      margin-left: 0;
+      padding: 5px 0;
+    }
+    .nav-wrapper ul.dropdown-list li a {
+      color: var(--third-color);
+    }
+
+    /* Show dropdown menu on hover */
+    .nav-wrapper ul.nav-list li:hover .dropdown-list {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Button styles */
+    .nav-wrapper .nav-list li .btn a {
+      color: var(--fourth-color);
+    }
+    .nav-wrapper .nav-list li .btn:hover a {
+      color: var(--third-color);
+    }
+
+    /* Mobile menu styles */
+    .mobile .hamberger {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+      cursor: pointer;
+      gap: 8px;
+    }
+    .mobile .hamberger span {
+      background: var(--third-color);
+      width: 28px;
+      height: 2px;
+    }
+    .mobile {
+      position: relative;
+      height: 100vh;
+    }
+
+    /* Mobile navigation list styles */
+    .mobile ul.nav-list {
+      background: -webkit-linear-gradient(45deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 60px;
+      bottom: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding-top: 80px;
+      opacity: 0;
+      overflow-y: auto;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Mobile navigation list item styles */
+    .mobile .nav-wrapper ul li {
+      text-align: center;
+    }
+
+    /* Mobile dropdown list styles */
+    .mobile ul.dropdown-list {
+      position: relative;
+      background: transparent;
+      text-align: center;
+      height: 0;
+      overflow-y: hidden;
+      transition: opacity 0.3s ease-in-out;
+      padding-top: 0;
+    }
+
+    /* Hover styles for mobile navigation */
+    .mobile .nav-wrapper ul li:hover {
+      color: #a89bce !important;
+      cursor: pointer;
+    }
+    .mobile .nav-wrapper ul .special:hover .dropdown-list {
+      height: max-content;
+      padding-top: 6px;
+      opacity: 1 !important;
+    }
+    .mobile .nav-wrapper ul.dropdown-list li a {
+      color: #7f8fa6;
+    }
+    .mobile .nav-wrapper ul.dropdown-list li a:hover {
+      color: var(--third-color);
+    }
+
+    /* Class to show the mobile menu */
+    .open {
+      opacity: 1 !important;
+    }
+
+    /* Media query for hamburger visibility */
+    @media screen and (max-width: 880px) {
+      .hamberger {
+        display: flex !important;
+      }
+    }
+  </style>
+
+  <body>
+    <!-- Primary navigation with a responsive menu -->
+    <nav aria-label="Primary Navigation">
+      <div class="menu-container nav-wrapper">
+        <div class="brand">
+          <a class="active" href="index.html">
+            <img
+              src="https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg"
+              alt="insurancy-logo"
+              width="100px"
+            />
+          </a>
+        </div>
+
+        <!-- Hamburger icon for mobile menu -->
+        <div class="hamberger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Navigation list -->
+        <ul class="nav-list">
+          <li>
+            <a href="#">Services</a>
+            <ul class="dropdown-list">
+              <li><a href="#">#</a></li>
+              <li><a href="#">#</a></li>
+              <li><a href="#">#</a></li>
+              <li><a href="#">#</a></li>
+              <li><a href="#">#</a></li>
+              <li><a href="#">#</a></li>
+            </ul>
+          </li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contacts</a></li>
+          <li>
+            <button class="btn btn-blue">
+              <a href="#">Get Started</a>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <script>
+      // Add event listener to execute code when the window is loaded
+      window.addEventListener("load", function () {
+        var updatedWidth;
+
+        // Check initial window width and add/remove "mobile" class accordingly
+        if (window.innerWidth < 880) {
+          document.body.classList.add("mobile");
+        } else {
+          document.body.classList.remove("mobile");
+        }
+
+        // Add event listener to handle window resize events
+        window.addEventListener("resize", function () {
+          updatedWidth = window.innerWidth;
+
+          // Toggle "mobile" class based on window width
+          if (updatedWidth < 880) {
+            document.body.classList.add("mobile");
+          } else {
+            document.body.classList.remove("mobile");
+          }
+        });
+      });
+
+      // Select hamburger menu and navigation list elements
+      let hamberger = document.querySelector(".hamberger");
+      let mobileNav = document.querySelector(".nav-list");
+      let bars = document.querySelectorAll(".hamberger span");
+      let isActive = false;
+
+      // Add event listener for hamburger menu click
+      hamberger.addEventListener("click", function () {
+        // Toggle "open" class on the navigation list
+        mobileNav.classList.toggle("open");
+
+        // Change hamburger icon to "X" and toggle state
+        if (!isActive) {
+          hamberger.style.gap = "0";
+          bars[0].style.transform = "translateY(2px) rotate(-135deg)";
+          bars[1].style.opacity = "0";
+          bars[2].style.transform = "translateY(-2px) rotate(135deg)";
+          isActive = true;
+        } else {
+          // Reset hamburger icon to original state
+          hamberger.style.gap = "8px";
+          bars[0].style.transform = "translateY(0px) rotate(0deg)";
+          bars[1].style.opacity = "1";
+          bars[2].style.transform = "translateY(0px) rotate(0deg)";
+          isActive = false;
+        }
+      });
+    </script>
+  </body>
+</html>
